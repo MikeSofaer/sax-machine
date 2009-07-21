@@ -44,6 +44,10 @@ describe "SAXMachine" do
         it "should be available" do
           @klass.data_class(:date).should == DateTime
         end
+        it "should generate a DateTime setter if it generates a setter" do
+          document = @klass.parse "<date>March 17, 1745</date>"
+          document.date.year.should == 1745
+        end
       end
       describe "the required attribute" do
         it "should be available" do
